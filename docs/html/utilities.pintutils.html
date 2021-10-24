@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utilities.pintutils package &mdash; OceanInsightUVVIS 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="uvvis package" href="uvvis.html" />
+    <link rel="prev" title="utilities.jsonutils package" href="utilities.jsonutils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> OceanInsightUVVIS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">source</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="utilities.html">utilities package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="utilities.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="utilities.datetimeutils.html">utilities.datetimeutils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utilities.jsonutils.html">utilities.jsonutils package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">utilities.pintutils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utilities.html#module-utilities">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="uvvis.html">uvvis package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OceanInsightUVVIS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">source</a> &raquo;</li>
+          <li><a href="utilities.html">utilities package</a> &raquo;</li>
+      <li>utilities.pintutils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utilities.pintutils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utilities-pintutils-package">
+<h1>utilities.pintutils package<a class="headerlink" href="#utilities-pintutils-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-utilities.pintutils.jsonpintencoder">
+<span id="utilities-pintutils-jsonpintencoder-module"></span><h2>utilities.pintutils.jsonpintencoder module<a class="headerlink" href="#module-utilities.pintutils.jsonpintencoder" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utilities.pintutils.jsonpintencoder.JsonPintEncoder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">utilities.pintutils.jsonpintencoder.</span></span><span class="sig-name descname"><span class="pre">JsonPintEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.pintutils.jsonpintencoder.JsonPintEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<p>Class extending <code class="xref py py-class docutils literal notranslate"><span class="pre">json.JSONEncoder</span></code> to handle <code class="xref py py-class docutils literal notranslate"><span class="pre">pint</span></code> Quantity and Unit objects.</p>
+<p>Code taken directly from <a class="reference external" href="https://stackoverflow.com/questions/65338261/combine-multiple-json-encoders">stackoverflow</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.pintutils.jsonpintencoder.JsonPintEncoder.default">
+<span class="sig-name descname"><span class="pre">default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utilities.pintutils.jsonpintencoder.JsonPintEncoder.default" title="Permalink to this definition"></a></dt>
+<dd><p>If a <code class="xref py py-class docutils literal notranslate"><span class="pre">pint.Quantity</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">pint.Unit</span></code> object is passed in <cite>obj</cite>, a string representation of the
+object will be returned. If the object is not one of these types, the base implementation is called
+(to raise a <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>obj</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">pint.Quantity</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">pint.Unit</span></code>) – a <code class="xref py py-class docutils literal notranslate"><span class="pre">pint</span></code> object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a string representation of the pint object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utilities.pintutils.unitmanager">
+<span id="utilities-pintutils-unitmanager-module"></span><h2>utilities.pintutils.unitmanager module<a class="headerlink" href="#module-utilities.pintutils.unitmanager" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.pintutils.unitmanager.unitmanager">
+<span class="sig-prename descclassname"><span class="pre">utilities.pintutils.unitmanager.</span></span><span class="sig-name descname"><span class="pre">unitmanager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pint.unit.Unit</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utilities.pintutils.unitmanager.unitmanager" title="Permalink to this definition"></a></dt>
+<dd><p>Formats a quantity label suitable for use on the x-axis of a chart.</p>
+<p>Units are output in their shortform (nm for nanometer).
+If <cite>unit</cite> is not provided, the quantity will be treated as dimensionless.</p>
+<p>Example for a wavelength of 280 nm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utilities.pintutils</span> <span class="kn">import</span> <span class="n">unitmanager</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ureg</span> <span class="o">=</span> <span class="n">unitmanager</span><span class="o">.</span><span class="n">pint</span><span class="o">.</span><span class="n">UnitRegistry</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">unitmanager</span><span class="o">.</span><span class="n">unitmanager</span><span class="p">(</span><span class="s1">&#39;wavelength&#39;</span><span class="p">,</span> <span class="n">ureg</span><span class="o">.</span><span class="n">nanometer</span><span class="p">,</span> <span class="mi">280</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">{&#39;name&#39;: &#39;wavelength&#39;, &#39;unit&#39;: &#39;nm&#39;, &#39;label&#39;: &#39;wavelength (nm)&#39;, &#39;value&#39;: 280, &#39;quantity&#39;: &#39;280 nm&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
+<span class="go">wavelength (nm)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;peak position = </span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;quantity&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">peak position = 280 nm</span>
+</pre></div>
+</div>
+<p>Example for unitless absorbance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utilities.pintutils</span> <span class="kn">import</span> <span class="n">unitmanager</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ureg</span> <span class="o">=</span> <span class="n">unitmanager</span><span class="o">.</span><span class="n">pint</span><span class="o">.</span><span class="n">UnitRegistry</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">unitmanager</span><span class="o">.</span><span class="n">unitmanager</span><span class="p">(</span><span class="s1">&#39;absorbance&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">{&#39;name&#39;: &#39;absorbance&#39;, &#39;unit&#39;: &#39;&#39;, &#39;label&#39;: &#39;absorbance&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
+<span class="go">absorbance</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>str</em>) – Name of the unit, for example ‘wavelength’</p></li>
+<li><p><strong>unit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">pint.Unit</span></code>, optional) – Name of the unit using the <code class="xref py py-class docutils literal notranslate"><span class="pre">pint</span></code> method of describing units.</p></li>
+<li><p><strong>value</strong> (<em>Number</em><em>, </em><em>optional</em>) – Value of the unit, for example 280 (for wavelength = 280 nm)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary containing the name, unit, axis label (and quantity if provided)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-utilities.pintutils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-utilities.pintutils" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utilities.jsonutils.html" class="btn btn-neutral float-left" title="utilities.jsonutils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uvvis.html" class="btn btn-neutral float-right" title="uvvis package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alex Henderson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

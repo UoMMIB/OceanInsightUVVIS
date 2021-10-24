@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: OceanInsightUVVIS
+abstract: Python package to read the Ocean Insight ultraviolet-visible spectroscopy (uv-vis) file format.
+authors:
+  - family-names: Henderson
+    given-names: Alex
+    orcid: "https://orcid.org/0000-0002-5791-8555"
+    affiliation: University of Manchester, UK
+    email: alex.henderson@manchester.ac.uk
+    website: https://alexhenderson.info
+version: 1.0.0
+date-released: "2021-10-24"
+license: MIT
+license-url: https://spdx.org/licenses/MIT#licenseText
+repository: "https://github.com/UoMMIB/OceanInsightUVVIS/"
