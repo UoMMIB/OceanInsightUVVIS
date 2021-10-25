@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OceanInsightUVVIS &mdash; OceanInsightUVVIS 1.0.0 documentation</title>
+  <title>OceanInsightUVVIS &mdash; OceanInsightUVVIS v2.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="source" href="modules.html" /> 
+    <link rel="next" title="sourcecode" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,7 +38,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">sourcecode</a></li>
 </ul>
 
         </div>
@@ -67,6 +67,7 @@
              
   <section class="tex2jax_ignore mathjax_ignore" id="oceaninsightuvvis">
 <h1>OceanInsightUVVIS<a class="headerlink" href="#oceaninsightuvvis" title="Permalink to this headline"></a></h1>
+<p><em>Release v2.0.0</em></p>
 <p>Python package to read the Ocean Insight ultraviolet-visible spectroscopy (uv-vis) file format.</p>
 <p><a class="reference external" href="https://www.oceaninsight.com/">Ocean Insight</a> (formerly Ocean Optics) produce instrumentation for spectroscopy.
 Their data acquisition package – <a class="reference external" href="https://www.oceaninsight.com/products/software/">OceanView</a> – can export
@@ -95,23 +96,24 @@ the <code class="docutils literal notranslate"><span class="pre">read</span></co
 <section id="functionality">
 <h3>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline"></a></h3>
 <p>Retrieve the filename of the currently active spectrum<br />
-<code class="docutils literal notranslate"><span class="pre">filename</span> <span class="pre">=</span> <span class="pre">spectrum.filename</span></code></p>
-<p>Retrieve the spectral data as a Pandas dataframe<br />
-<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">spectrum.data</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">filename</span> <span class="pre">=</span> <span class="pre">spectrum.filename()</span></code></p>
+<p>Retrieve the spectral data as a pandas.DataFrame<br />
+<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">spectrum.data()</span></code></p>
 <p>Retrieve the raw file header information as a dictionary<br />
-<code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">=</span> <span class="pre">spectrum.header</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">=</span> <span class="pre">spectrum.header()</span></code></p>
 <p>Retrieve the file metadata as a dictionary<br />
-<code class="docutils literal notranslate"><span class="pre">metadata</span> <span class="pre">=</span> <span class="pre">spectrum.metadata_as_dict()</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">metadata</span> <span class="pre">=</span> <span class="pre">spectrum.metadata()</span></code></p>
 <p>Retrieve the file metadata as a JSON string<br />
 <code class="docutils literal notranslate"><span class="pre">jsonmetadata</span> <span class="pre">=</span> <span class="pre">spectrum.metadata_as_json()</span></code></p>
 </section>
 </section>
 <section id="copyright-and-licence-for-use">
 <h2>Copyright and Licence for use<a class="headerlink" href="#copyright-and-licence-for-use" title="Permalink to this headline"></a></h2>
-<p>Copyright (C) 2021 Alex Henderson <a class="reference external" href="mailto:alex&#46;henderson&#37;&#52;&#48;manchester&#46;ac&#46;uk">alex<span>&#46;</span>henderson<span>&#64;</span>manchester<span>&#46;</span>ac<span>&#46;</span>uk</a></p>
+<p>Copyright (C) 2021 Alex Henderson <a class="reference external" href="mailto:alex&#46;henderson&#37;&#52;&#48;manchester&#46;ac&#46;uk">alex<span>&#46;</span>henderson<span>&#64;</span>manchester<span>&#46;</span>ac<span>&#46;</span>uk</a><br />
+Release v2.0.0</p>
 <p>This work is licensed under a <a class="reference external" href="https://opensource.org/licenses/MIT">MIT</a> license.<br />
 SPDX-License-Identifier: MIT</p>
-<p>The most recent version of this software library can be found here: https://github.com/UoMMIB/OceanInsightUVVIS/</p>
+<p>The most recent version of this software library can be found here: <a class="reference external" href="https://github.com/UoMMIB/OceanInsightUVVIS/">https://github.com/UoMMIB/OceanInsightUVVIS/</a></p>
 </section>
 <section id="contributors">
 <h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline"></a></h2>
@@ -121,7 +123,7 @@ SPDX-License-Identifier: MIT</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">source</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">sourcecode</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="utilities.html#subpackages">Subpackages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="utilities.html#module-utilities">Module contents</a></li>
@@ -150,7 +152,7 @@ SPDX-License-Identifier: MIT</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-right" title="source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="sourcecode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -5,6 +5,7 @@
 from datetime import datetime, date, time
 import json
 from pathlib import Path
+from typing import Optional
 
 import pandas as pd
 from pint import UnitRegistry
@@ -23,7 +24,7 @@ class UVVisSpectrum:
     The file must be in 'ASCII (with header data)' text format.
 
     Public properties:
-        * `filename`: a string containing the file's location.
+        * `_filename`: a string containing the file's location.
         * `metadata`: a dict containing the file's headers (see also `metadata_as_dict`).
         * `header`: a dict containing the raw header information in the file.
         * `data`: a :class:`pandas.dataframe` containing the spectral data.
@@ -41,42 +42,78 @@ class UVVisSpectrum:
         :type filename: str, optional
         """
 
-        self.filename = filename
-        self.metadata = dict()
-        self.header = dict()
-        self.data = pd.DataFrame()
+        self._filename = filename
+        self._metadata = dict()
+        self._header = dict()
+        self._data = pd.DataFrame()
 
-        self.read(self.filename)
+        self.read(self._filename)
+
+    def filename(self) -> Optional[str]:
+        """
+        Retrieve the name of the current spectrum file, or None if no filename is available.
+
+        :return: The name of the currently active file
+        :rtype: Optional[str]
+        """
+        return self._filename
+
+    def metadata(self) -> dict:
+        """
+        Retrieve metadata relating to the spectrum file as a dict.
+
+        :return: A dict of the file's metadata.
+        :rtype: dict
+        """
+        return self._metadata
+
+    def header(self) -> dict:
+        """
+        A dict containing the spectrum file's headers.
+
+        :return: A dict containing the spectrum file's headers.
+        :rtype: dict
+        """
+        return self._header
+
+    def data(self) -> pd.DataFrame:
+        """
+        The spectral x- and y-values as a pandas.DataFrame.
+
+        :return: The XY pairs representing the UVVIS spectrum
+        :rtype: pandas.DataFrame
+        """
+        return self._data
 
     def read(self, filename: str = None) -> None:
         """
         Reads an Ocean Insight uv-vis spectrum file in 'ASCII (with header data)' text format.
 
-        If a filename is present in the object, perhaps passed to the constructor, and no filename is passed in here,
-        the object's filename will be read.
+        If a _filename is present in the object, perhaps passed to the constructor, and no _filename is passed in here,
+        the object's _filename will be read.
 
-        If this function is passed a filename, and one is already present, the filename here will overwrite the
-        object's filename and be read by this function.
+        If this function is passed a _filename, and one is already present, the _filename here will overwrite the
+        object's _filename and be read by this function.
 
-        If no filename is already present, and one is not passed in here, a `FileNotFoundError` exception is raised.
+        If no _filename is already present, and one is not passed in here, a `FileNotFoundError` exception is raised.
 
         :param filename: An Ocean Insight uv-vis spectrum file in 'ASCII (with header data)' text format.
         :type filename: str, optional
-        :raises FileNotFoundError: Raised if no filename is available, or the filename is invalid.
+        :raises FileNotFoundError: Raised if no _filename is available, or the _filename is invalid.
         :return: This function returns no variable.
         :rtype: NoReturn
         """
 
         try:
             if filename:
-                self.filename = filename
+                self._filename = filename
 
-            filename = Path(self.filename)
+            filename = Path(self._filename)
 
             # Reset the contents in the case where we are reading a different file from that originally loaded.
-            self.metadata = dict()
-            self.header = dict()
-            self.data = pd.DataFrame()
+            self._metadata = dict()
+            self._header = dict()
+            self._data = pd.DataFrame()
 
             x_values = list()
             y_values = list()
@@ -87,7 +124,7 @@ class UVVisSpectrum:
                 for line in f:
                     line = line.rstrip()
                     if first_line:
-                        self.header['Description'] = line
+                        self._header['Description'] = line
                         first_line = False
                     else:
                         if line == '':
@@ -106,18 +143,18 @@ class UVVisSpectrum:
                                     parts = line.split(sep=': ')
                                     if len(parts) != 2:
                                         raise Exception('Something wrong here')
-                                    self.header[parts[0]] = parts[1]
+                                    self._header[parts[0]] = parts[1]
 
             self._extract_metadata()
 
-            x_label = self.metadata['abscissa']['label']
-            y_label = self.metadata['ordinate']['label']
+            x_label = self._metadata['abscissa']['label']
+            y_label = self._metadata['ordinate']['label']
 
-            self.data = pd.DataFrame(list(zip(x_values, y_values)),
-                                     columns=[x_label, y_label])
+            self._data = pd.DataFrame(list(zip(x_values, y_values)),
+                                      columns=[x_label, y_label])
 
-            self.metadata['lowest-observed-wavelength'] = x_values[0]
-            self.metadata['highest-observed-wavelength'] = x_values[-1]
+            self._metadata['lowest-observed-wavelength'] = x_values[0]
+            self._metadata['highest-observed-wavelength'] = x_values[-1]
 
         except FileNotFoundError as err:
             print(err)
@@ -132,9 +169,9 @@ class UVVisSpectrum:
         :return: A string containing the ISO 8601 format of the `self.date`.
         :rtype: str
         """
-        if 'Date' in self.header:
+        if 'Date' in self._header:
             # Date: Thu Feb 27 15:05:24 GMT 2020
-            date_parts = self.header['Date'].split()
+            date_parts = self._header['Date'].split()
             year = int(date_parts[5])
             dtmonth = datetime.strptime(date_parts[1], "%b")
             month = dtmonth.month
@@ -159,80 +196,70 @@ class UVVisSpectrum:
         ureg = UnitRegistry()
 
         # Record the vendor's file format header
-        self.metadata['vendor_header'] = self.header
+        self._metadata['vendor_header'] = self._header
 
         # Information about the technique
-        self.metadata['technique'] = 'UV-vis spectroscopy'
-        self.metadata['technique-iri'] = 'http://purl.obolibrary.org/obo/CHMO_0000292'
+        self._metadata['technique'] = 'UV-vis spectroscopy'
+        self._metadata['technique-iri'] = 'http://purl.obolibrary.org/obo/CHMO_0000292'
 
         # Information about the instrument
-        self.metadata['instrument'] = dict()
-        self.metadata['instrument']['vendor'] = 'Ocean Insight'
-        if 'Spectrometer' in self.header:
-            self.metadata['instrument']['spectrometer'] = self.header['Spectrometer']
+        self._metadata['instrument'] = dict()
+        self._metadata['instrument']['vendor'] = 'Ocean Insight'
+        if 'Spectrometer' in self._header:
+            self._metadata['instrument']['spectrometer'] = self._header['Spectrometer']
 
         # Information about the experiment
-        if 'Trigger mode' in self.header:
+        if 'Trigger mode' in self._header:
             # Making an assumption this is an integer
-            self.metadata['Trigger mode'] = int(self.header['Trigger mode'])
+            self._metadata['Trigger mode'] = int(self._header['Trigger mode'])
 
-        if 'Scans to average' in self.header:
-            self.metadata['scans'] = int(self.header['Scans to average'])
+        if 'Scans to average' in self._header:
+            self._metadata['scans'] = int(self._header['Scans to average'])
 
-        if 'Integration Time (sec)' in self.header:
+        if 'Integration Time (sec)' in self._header:
             # Making an assumption this is a float
-            dwell = ureg.Quantity(float(self.header['Integration Time (sec)']), ureg.sec)
-            self.metadata['dwell-time'] = dwell
+            dwell = ureg.Quantity(float(self._header['Integration Time (sec)']), ureg.sec)
+            self._metadata['dwell-time'] = dwell
 
-        if 'Nonlinearity correction enabled' in self.header:
-            if self.header['Nonlinearity correction enabled'].lower() == 'false':
-                self.metadata['Nonlinearity correction enabled'] = False
+        if 'Nonlinearity correction enabled' in self._header:
+            if self._header['Nonlinearity correction enabled'].lower() == 'false':
+                self._metadata['Nonlinearity correction enabled'] = False
             else:
-                self.metadata['Nonlinearity correction enabled'] = True
+                self._metadata['Nonlinearity correction enabled'] = True
 
-        if 'Boxcar width' in self.header:
-            self.metadata['Boxcar width'] = int(self.header['Boxcar width'])
+        if 'Boxcar width' in self._header:
+            self._metadata['Boxcar width'] = int(self._header['Boxcar width'])
 
-        if 'Storing dark spectrum' in self.header:
-            if self.header['Storing dark spectrum'].lower() == 'false':
-                self.metadata['Storing dark spectrum'] = False
+        if 'Storing dark spectrum' in self._header:
+            if self._header['Storing dark spectrum'].lower() == 'false':
+                self._metadata['Storing dark spectrum'] = False
             else:
-                self.metadata['Storing dark spectrum'] = True
+                self._metadata['Storing dark spectrum'] = True
 
         # Generate information about the axes
         # If a x-axis label is provided, use that, but we have no information about the units
         # If the label happens to be 'Wavelengths', convert to wavelength in nm
         # Otherwise return a default label of 'x'
-        if 'XAxis mode' in self.header:
-            if self.header['XAxis mode'].lower() == 'wavelengths':
+        if 'XAxis mode' in self._header:
+            if self._header['XAxis mode'].lower() == 'wavelengths':
                 x_label = unitmanager('wavelength', ureg.nm)
             else:
-                x_label = unitmanager(self.header['XAxis mode'], ureg.dimensionless)
+                x_label = unitmanager(self._header['XAxis mode'], ureg.dimensionless)
         else:
             # Default x label
             x_label = unitmanager('x', ureg.dimensionless)
-        self.metadata['abscissa'] = x_label
+        self._metadata['abscissa'] = x_label
 
         # Make up the y-axis label since we don't know if it is stored
         # Here we assume intensities are always stored in absorbance units (dimensionless)
         y_label = unitmanager('absorbance', ureg.dimensionless)
-        self.metadata['ordinate'] = y_label
+        self._metadata['ordinate'] = y_label
 
-        if 'Number of Pixels in Spectrum' in self.header:
-            self.metadata['number-of-data-points'] = int(self.header['Number of Pixels in Spectrum'])
+        if 'Number of Pixels in Spectrum' in self._header:
+            self._metadata['number-of-data-points'] = int(self._header['Number of Pixels in Spectrum'])
 
-        if 'Date' in self.header:
-            self.metadata['acquisition-date'] = self._date_to_isoformat()
-
-    def metadata_as_dict(self) -> dict:
-        """
-        Convert the metadata to a dict.
-
-        :return: A dict of the file's metadata headers.
-        :rtype: dict
-        """
-
-        return self.metadata
+        if 'Date' in self._header:
+            self._metadata['acquisition-date'] = self._date_to_isoformat()
 
     def metadata_as_json(self, indent=4) -> str:
         """
@@ -246,5 +273,5 @@ class UVVisSpectrum:
 
         encoder = MultipleJsonEncoders(JsonPintEncoder, JsonDatetimeEncoder)
 
-        json_metadata = json.dumps(self.metadata, indent=indent, cls=encoder)
+        json_metadata = json.dumps(self._metadata, indent=indent, cls=encoder)
         return json_metadata

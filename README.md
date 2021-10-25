@@ -1,4 +1,5 @@
 # OceanInsightUVVIS
+_Release v2.0.0_   
 
 Python package to read the Ocean Insight ultraviolet-visible spectroscopy (uv-vis) file format.
 
@@ -29,22 +30,23 @@ spectrum = UVVisSpectrum("myfile.txt")
 
 ### Functionality
 Retrieve the filename of the currently active spectrum  
-    `filename = spectrum.filename`
+    `filename = spectrum.filename()`
 
-Retrieve the spectral data as a Pandas dataframe  
-`data = spectrum.data`
+Retrieve the spectral data as a pandas.DataFrame  
+`data = spectrum.data()`
 
 Retrieve the raw file header information as a dictionary  
-`header = spectrum.header`  
+`header = spectrum.header()`  
 
 Retrieve the file metadata as a dictionary  
-`metadata = spectrum.metadata_as_dict()`  
+`metadata = spectrum.metadata()`  
 
 Retrieve the file metadata as a JSON string    
 `jsonmetadata = spectrum.metadata_as_json()`  
 
 ## Copyright and Licence for use
-Copyright (C) 2021 Alex Henderson [alex.henderson@manchester.ac.uk](mailto:alex.henderson@manchester.ac.uk)
+Copyright (C) 2021 Alex Henderson [alex.henderson@manchester.ac.uk](mailto:alex.henderson@manchester.ac.uk)  
+Release v2.0.0
 
 This work is licensed under a [MIT](https://opensource.org/licenses/MIT) license.  
 SPDX-License-Identifier: MIT  
