@@ -44,7 +44,7 @@ Retrieve the file metadata as a dictionary
 Retrieve the file metadata as a JSON string    
 `jsonmetadata = spectrum.metadata_as_json()`  
 
-## Documentation
+### Documentation
 See [https://uommib.github.io/OceanInsightUVVIS/](https://uommib.github.io/OceanInsightUVVIS/) for source code 
 documentation
 
